@@ -8,7 +8,7 @@ declare var Auth0Lock;
 
 @Component({
   directives: [ ROUTER_DIRECTIVES ],
-  selector: 'auth',
+  selector: 'auth-component',
   templateUrl: 'app/auth/auth.component.html',
  
 })

@@ -8,7 +8,7 @@ import {Dashboard} from './components/dashboard/dashboard';
 import {Tables} from './components/tables/tables';
 @Component({ 
     selector: 'app-container',
-    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, AuthComponent],
     templateUrl: 'app/app.component.html' 
 })
 @RouteConfig([

@@ -28,8 +28,8 @@ export class CustomersComponent {
   constructor(private dataService: DataService) { }
   
   ngOnInit() {
-    this.title = 'Customers';
-    this.filterText = 'Filter Customers:';
+    this.title = 'Pacients';
+    this.filterText = 'Filter Pacients:';
     this.listDisplayModeEnabled = false;
 
     this.dataService.getCustomers()

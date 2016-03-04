@@ -1,5 +1,6 @@
 import {Component, View} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
+import { RouterLink} from 'angular2/router';
 import {Alerts} from '../alerts/alerts';
 
 
@@ -24,7 +25,7 @@ import {UserListService} from '../../services/user_list';
 @View({
   templateUrl: 'app/components/dashboard/dashboard.html',
   styleUrls: ['app/components/dashboard/dashboard.css'],
-  directives: [Alerts, RdWidget, RdWidgetHeader, RdWidgetBody, RdWidgetFooter, RdLoading, ServerListView, UserListView]
+  directives: [Alerts, RouterLink, RdWidget, RdWidgetHeader, RdWidgetBody, RdWidgetFooter, RdLoading, ServerListView, UserListView]
 })
 export class Dashboard {
 

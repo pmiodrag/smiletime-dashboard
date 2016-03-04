@@ -3,44 +3,76 @@ import {RouteConfig, Router, ROUTER_DIRECTIVES, CanActivate} from 'angular2/rout
 import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {AuthHttp, tokenNotExpired, JwtHelper} from 'angular2-jwt/angular2-jwt';
-
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 declare var Auth0Lock;
 
 @Component({
-  directives: [ ROUTER_DIRECTIVES ],
-  selector: 'auth-component',
-  templateUrl: 'app/auth/auth.component.html',
- 
+    directives: [ROUTER_DIRECTIVES],
+    selector: 'auth-component',
+    templateUrl: 'app/auth/auth.component.html'
 })
 
 export class AuthComponent {
+    jsonObj: JSON;
+    picture: string;
+    lock = new Auth0Lock('9NdeCaZbpddcqM34xZ8BKcZcwMfPqFNl', 'twinsoft.eu.auth0.com');
+    //lock = new Auth0Lock('AUTH0_CLIENT_ID', 'AUTH0_DOMAIN');
+    jwtHelper: JwtHelper = new JwtHelper();
+    profile: string;
+    name: string;
 
- lock = new Auth0Lock('9NdeCaZbpddcqM34xZ8BKcZcwMfPqFNl', 'twinsoft.eu.auth0.com');
-  //lock = new Auth0Lock('AUTH0_CLIENT_ID', 'AUTH0_DOMAIN');
-  jwtHelper: JwtHelper = new JwtHelper();
+    constructor(public http: Http, public authHttp: AuthHttp) {
+        this.profile = localStorage.getItem('profile');
+        this.setProfileObject();
+    }
 
-  constructor(public http: Http, public authHttp: AuthHttp) {}
+    login() {
+        this.lock.show((err: string, profile: string, id_token: string) => {
+            if (err) {
+                throw new Error(err);
+            }
+            localStorage.setItem('profile', JSON.stringify(profile));
+            localStorage.setItem('id_token', id_token);
+            this.setProfileObject();
+        });
+    }
+    setProfileObject() {
+        this.profile = localStorage.getItem('profile');
+        this.jsonObj = JSON.parse(this.profile);
+        console.log(" this.jsonObj == ", this.jsonObj);
+        if (this.jsonObj != null) {
+            this.picture = this.jsonObj['picture'];
+            this.name = this.jsonObj['name'];
+        } else {
+            this.picture = "img/avatar.jpg"
+            this.name = "";
+        }
+    }
+    logout() {
+        localStorage.removeItem('profile');
+        localStorage.removeItem('id_token');
+        this.picture = "img/avatar.jpg";
+        this.name = "";
+    }
 
-  login() {
-    this.lock.show((err: string, profile: string, id_token: string) => {
+    loggedIn() {
+        return tokenNotExpired();
+    }
 
-      if (err) {
-        throw new Error(err);
-      }
-
-      localStorage.setItem('profile', JSON.stringify(profile));
-      localStorage.setItem('id_token', id_token);
-
-    });
-  }
-
-  logout() {
-    localStorage.removeItem('profile');
-    localStorage.removeItem('id_token');
-  }
-
-  loggedIn() {
-    return tokenNotExpired();
-  }
+    tokenSubscription() {
+        this.authHttp.tokenStream.subscribe(
+            data => console.log(data),
+            err => console.log(err),
+            () => console.log('Complete')
+        );
+    }
+    useJwtHelper() {
+        var token = localStorage.getItem('id_token');
+        console.log(
+            this.jwtHelper.decodeToken(token),
+            this.jwtHelper.getTokenExpirationDate(token),
+            this.jwtHelper.isTokenExpired(token)
+        );
+    }
 
 }

@@ -1,13 +1,16 @@
+
 <div class="customers view indent">
-    <div class="container">
-        <header>
-            <h3>
-                <span class="glyphicon glyphicon-user"></span>
-                {{ title }}
-            </h3>
-        </header>
-        <br />
-        <div class="row">
+    <div layout="column" class="scroll-shrink">
+       <md-toolbar class="md-hue-3">
+            <div class="md-toolbar-tools green"> 
+                <h2>
+                    <img src="images/people.png" alt="logo">
+                    <span>{{ title }}</span>
+                </h2>
+            </div>       
+       </md-toolbar>
+       <md-content flex>
+        <div class="row voffset4">
             <div class="col-md-10">
                 <div class="navbar">
                     <ul class="nav navbar-nav">
@@ -27,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="row">
             <div class="row card-container" [hidden]="listDisplayModeEnabled">
                 <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="#customer of filteredCustomers">
                     <div class="card">
@@ -91,4 +94,6 @@
                 </div>
             </div>
         </div>
+         </md-content>
     </div>
+</div>

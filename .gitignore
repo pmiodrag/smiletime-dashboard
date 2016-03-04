@@ -4,3 +4,5 @@ src/app/**/*.js.map
 
 
 
+/nbproject/private/
+/bower_components/

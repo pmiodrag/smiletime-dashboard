@@ -1,3 +1,4 @@
+declare var require: any;
 import {Component, View} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 
@@ -6,7 +7,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
   properties: ['model']
 })
 @View({
-  templateUrl: 'app/components/server-list-view/server-list-view.html',
+  template: require('./server-list-view.html'),
   directives: [CORE_DIRECTIVES]
 })
 export class ServerListView {

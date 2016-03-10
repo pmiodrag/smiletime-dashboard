@@ -1,3 +1,4 @@
+declare var require: any;
 import {Component, View, Injector, provide } from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {RdLoading} from '../rd-loading/rd-loading';
@@ -15,7 +16,8 @@ import {ServerListService} from '../../services/server_list';
   providers: [ServerListService]
 })
 @View({
-  templateUrl: 'app/components/tables/tables.html',
+//  templateUrl: 'app/components/tables/tables.html',
+  template: require('./tables.html'),
   directives: [CORE_DIRECTIVES, RdWidget, RdWidgetHeader, RdWidgetBody, RdWidgetFooter, RdLoading,ServerListView]
 })
 export class Tables {

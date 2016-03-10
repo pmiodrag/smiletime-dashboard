@@ -1,3 +1,4 @@
+declare var require: any;
 import {Component, View} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 @Component({
@@ -5,7 +6,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
   properties: ['model']
 })
 @View({
-  templateUrl: 'app/components/user-list-view/user-list-view.html',
+  template: require('./user-list-view.html'),
   directives: [CORE_DIRECTIVES]
 })
 export class UserListView {

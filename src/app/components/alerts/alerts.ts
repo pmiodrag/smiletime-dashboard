@@ -1,10 +1,11 @@
+declare var require: any;
 import {Component, View} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 @Component({
   selector: 'alerts'
 })
 @View({
-  templateUrl: 'app/components/alerts/alerts.html',
+  template: require('./alerts.html'),
   directives: [CORE_DIRECTIVES]
 })
 export class Alerts {

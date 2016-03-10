@@ -1,6 +1,7 @@
 import {Component, View} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import { RouterLink} from 'angular2/router';
+declare var require: any;
 import {Alerts} from '../alerts/alerts';
 
 
@@ -20,11 +21,13 @@ import {UserListService} from '../../services/user_list';
 
 @Component({
   selector: 'dashboard',
-  providers: [ServerListService]
+  providers: [ServerListService],
+  
 })
 @View({
-  templateUrl: 'app/components/dashboard/dashboard.html',
-  styleUrls: ['app/components/dashboard/dashboard.css'],
+  template: require( './dashboard.html'),
+   styles: [require('../../styles/styles.css'), require('../../styles/app.css'), require('../../styles/bootstrap.min.css'), 
+  require('../../styles/font-awesome.min.css'), require('../../styles/rdash.css')],
   directives: [Alerts, RouterLink, RdWidget, RdWidgetHeader, RdWidgetBody, RdWidgetFooter, RdLoading, ServerListView, UserListView]
 })
 export class Dashboard {
@@ -37,11 +40,11 @@ export class Dashboard {
 
   constructor() {
     this.serverListService = new ServerListService();
-    /*TODO: Inject*/
+//    /*TODO: Inject*/
     this.servers = this.serverListService.all();
-
+//
     this.userListService = new UserListService();
-    /*TODO: Inject*/
+//    /*TODO: Inject*/
     this.users = this.userListService.all();
   }
 }

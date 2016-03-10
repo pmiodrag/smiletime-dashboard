@@ -1,7 +1,10 @@
 
 <div id="page-wrapper" [ngClass]="{'open': toggle}" ng-cloak md-theme="dark">
-
-  <!-- Sidebar -->
+<!-- <div>
+    <button id="check-preboot" (click)="onCheckPreboot()">Check "Preboot"</button>
+    <span id="message-preboot" *ngIf="messagePreboot">{{ messagePreboot }}</span>
+  </div>
+   Sidebar 
   <div id="sidebar-wrapper">
     <ul class="sidebar">
       <li class="sidebar-main">
@@ -11,9 +14,9 @@
         </a>
       </li>
       <li class="sidebar-title"><span>NAVIGATION</span></li>
-<!--      <li class="sidebar-list">
+      <li class="sidebar-list">
         <a [routerLink]="['/Dashboard']">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
-      </li>-->
+      </li>
       <li class="sidebar-list">
         <a [routerLink]="['/Tables']">Tables <span class="menu-icon fa fa-table"></span></a>
       </li>
@@ -36,21 +39,28 @@
       </div>
     </div>
   </div>
-  <!-- End Sidebar -->
+   End Sidebar -->
 
   <div id="content-wrapper">
     <div class="page-content">
 
-      <!-- Header Bar -->
+       Header Bar 
       <div class="row header">
-          <auth-component></auth-component>       
+<!--          <auth-component></auth-component>       -->
       </div>
       <dashboard></dashboard>
-      <!-- End Header Bar -->
-      <!--&lt;!&ndash; Main Content &ndash;&gt;-->
+       End Header Bar 
+      &lt;!&ndash; Main Content &ndash;&gt;
       <router-outlet></router-outlet>
 <!--    <customers></customers>-->
-    </div><!-- End Page Content -->
-  </div><!-- End Content Wrapper -->
-</div><!-- End Page Wrapper -->
+    </div> End Page Content 
+  </div> End Content Wrapper 
+</div> End Page Wrapper 
 
+<div>
+  <p>
+    Try to push the button before angular2 will be loaded. 
+    Preboot will catch the "click" event and replay it later.
+  </p>
+ 
+</div>

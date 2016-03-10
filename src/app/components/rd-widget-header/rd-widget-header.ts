@@ -1,3 +1,4 @@
+declare var require: any;
 import {Component, View} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 
@@ -6,7 +7,7 @@ import {CORE_DIRECTIVES} from 'angular2/common';
   properties: ['title', 'icon']
 })
 @View({
-  templateUrl: 'app/components/rd-widget-header/rd-widget-header.html',
+  template: require('./rd-widget-header.html'),
   directives: [CORE_DIRECTIVES]
 })
 export class RdWidgetHeader {

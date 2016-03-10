@@ -1,3 +1,5 @@
+import {Injectable} from 'angular2/core';
+@Injectable()
 export class ServerListService {
   servers:any[] = [{
     name: 'RDVMPC001',

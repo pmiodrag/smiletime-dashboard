@@ -14,7 +14,7 @@ import {Tables} from './components/tables/tables';
 @RouteConfig([
  { path: '/customers', as: 'Customers', component: CustomersComponent },
  { path: '/orders/:id', as: 'Orders', component: OrdersComponent    },
-//    { path: '/login', as: 'Auth', component: AuthComponent },
+    { path: '/login', as: 'Auth', component: AuthComponent },
 //     {path: '/dashboard',  component: Dashboard, as: 'Dashboard', useAsDefault: true },
   {path: '/tables', component: Tables, as: 'Tables'},
 ])

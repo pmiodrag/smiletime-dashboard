@@ -15,13 +15,21 @@ gulp.task('clean', function(){
 
 gulp.task('build:server', function () {
 	var tsProject = ts.createProject('src/server/tsconfig.json');
+//          var copyIndex = gulp.src('src/server/index.html')
+//        .pipe(gulp.dest('dist/server'))
+    
     var tsResult = gulp.src('src/server/**/*.ts')
 		.pipe(sourcemaps.init())
         .pipe(ts(tsProject))
+// .pipe(concat('server.js'))
+//        .pipe(sourcemaps.write()) 
+//		.pipe(gulp.dest('dist/server'))
+//         return [tsResult, copyIndex];
 	return tsResult.js
         .pipe(concat('server.js'))
         .pipe(sourcemaps.write()) 
 		.pipe(gulp.dest('dist'))
+        
 });
 
 
@@ -45,10 +53,10 @@ var jsNPMDependencies = [
 gulp.task('build:styles', function() {
     var copyNgStyles= gulp.src('node_modules/ng2-material/dist/*.css')
      .pipe(minifyCSS())
-        .pipe(gulp.dest('dist/assets/styles'));
+        .pipe(gulp.dest('dist/styles'));
     var copyStyles= gulp.src('src/client/styles/*.css')
      .pipe(minifyCSS())
-            .pipe(gulp.dest('dist/assets/styles'))
+            .pipe(gulp.dest('dist/styles'))
         return[copyStyles, copyNgStyles];
         //.pipe(less())
        // .on('error', console.log)

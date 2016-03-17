@@ -1,17 +1,13 @@
 import express = require('express');
 import path = require('path');
-//import livereload = require('connect-livereload');
-// var livereloadport = 35729;
 var port: number = process.env.PORT || 3000;
 var app = express();
-//Add livereload middleware before static-middleware
-//app.use(livereload({
-//  port: livereloadport
-//}));
+
 app.use('/app', express.static(path.resolve(__dirname, 'app')));
 app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
-app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
+
 var renderIndex = (req: express.Request, res: express.Response) => {
+    console.log("__dirname", __dirname)
     res.sendFile(path.resolve(__dirname, 'index.html'));
 }
 

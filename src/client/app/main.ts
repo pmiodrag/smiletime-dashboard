@@ -2,7 +2,7 @@
 import { bootstrap } from 'angular2/platform/browser';
 import { bind, provide } from 'angular2/core';
 import { FORM_PROVIDERS } from "angular2/common";
-import {APP_BASE_HREF, ROUTER_PROVIDERS, ROUTER_BINDINGS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
+import {APP_BASE_HREF, ROUTER_PROVIDERS, ROUTER_BINDINGS, LocationStrategy, PathLocationStrategy } from 'angular2/router';
 import { HTTP_PROVIDERS, Http } from 'angular2/http';
 import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 import {AuthHttp, AuthConfig} from 'angular2-jwt/angular2-jwt';
@@ -21,8 +21,8 @@ bootstrap(AppComponent, [
       deps: [Http]
     }),
      provide(APP_BASE_HREF, {useValue : '/' }),
-    bind(LocationStrategy).toClass(HashLocationStrategy)
+    bind(LocationStrategy).toClass(PathLocationStrategy)
 ]).then(
     success => console.log('AppComponent bootstrapped!'),
-    error => console.log(error)
+    error => console.log('AppComponent NOT bootstrapped!', error)
 );

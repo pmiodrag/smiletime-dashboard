@@ -16,7 +16,7 @@ export class DataService {
     
     getCustomers() {
         return this.http.get(this.baseUrl + 'getcustomers')
-                        .map((res: Response) => res)
+                        .map((res: Response) => res.json())
                         .catch(this.handleError);
     }
 

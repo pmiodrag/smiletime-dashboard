@@ -8,7 +8,7 @@ import { FilterTextboxComponent } from './filterTextbox.component';
 import { SortByDirective } from '../shared/directives/sortby.directive';
 import { CapitalizePipe } from '../shared/pipes/capitalize.pipe';
 import { TrimPipe } from '../shared/pipes/trim.pipe';
-
+import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 @Component({ 
   selector: 'customers', 
   providers: [DataService],
@@ -34,7 +34,6 @@ export class CustomersComponent {
 
     this.dataService.getCustomers() 
         .subscribe((customers:any[]) => {
-            console.log("getCustomers", customers);
           this.customers = this.filteredCustomers = customers;
         });
 

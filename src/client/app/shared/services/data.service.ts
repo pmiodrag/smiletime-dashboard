@@ -14,9 +14,10 @@ export class DataService {
 
     constructor(private http: Http) { }
     
-    getCustomers() {
-        return this.http.get(this.baseUrl + 'getcustomers')
-                        .map((res: Response) => res.json())
+    getCustomers() {       
+    
+        return this.http.get(this.baseUrl + 'selectCustomers')
+                       .map((res: Response) => res.json())
                         .catch(this.handleError);
     }
 

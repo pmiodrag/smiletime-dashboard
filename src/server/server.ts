@@ -19,6 +19,7 @@ var renderCustomer = (req: express.Request, res: express.Response) => {
 }
 app.get('/getcustomers', renderCustomer);
 app.get('/*', renderIndex);
+app.get('/selectCustomers', selectCustomers);
 
 
 var server = app.listen(port, function() {
@@ -26,3 +27,31 @@ var server = app.listen(port, function() {
     var port = server.address().port;
     console.log('This express app is listening on port:' + port);
 });
+
+var mysql = require('mysql'); // node-mysql module
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'smiletime'
+});
+
+connection.connect();
+
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+  if (err) throw err;
+  console.log('The solution is: ', rows[0].solution);
+});
+var selectCustomers = (req: express.Request, res: express.Response) => {
+    console.log("selectCustomers")
+    connection.query("SELECT * from patient",function(err,rows){
+    if(err) {
+        console.log("Problem with MySQL"+err);
+        res.sendFile(path.resolve(__dirname, 'customers.json'));
+      } else {
+        res.json({"Error" : false, "Message" : "Success", "Customers" : rows});
+          //res.end(JSON.stringify(rows));
+      }
+  });
+}
+

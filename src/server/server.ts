@@ -10,7 +10,7 @@ app.use('/styles', express.static(path.resolve(__dirname, 'styles')));
 app.use('/fonts', express.static(path.resolve(__dirname, 'assets/fonts')));
 
 var renderIndex = (req: express.Request, res: express.Response) => {
-    console.log("__dirname", __dirname, "req", req)
+    console.log("renderIndex __dirname", __dirname)
     res.sendFile(path.resolve(__dirname, 'index.html'));
 }
 var renderCustomer = (req: express.Request, res: express.Response) => {

@@ -34,6 +34,7 @@ export class CustomersComponent {
 
     this.dataService.getCustomers() 
         .subscribe((customers:any[]) => {
+            console.log("getCustomers", customers);
           this.customers = this.filteredCustomers = customers;
         });
 

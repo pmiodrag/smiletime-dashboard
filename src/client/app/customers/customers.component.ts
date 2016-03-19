@@ -32,8 +32,9 @@ export class CustomersComponent {
     this.filterText = 'Filter Pacients:';
     this.listDisplayModeEnabled = false;
 
-    this.dataService.getCustomers()
+    this.dataService.getCustomers() 
         .subscribe((customers:any[]) => {
+            console.log("getCustomers", customers);
           this.customers = this.filteredCustomers = customers;
         });
 

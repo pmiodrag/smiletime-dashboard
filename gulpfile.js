@@ -50,6 +50,7 @@ var jsNPMDependencies = [
     'angular2-jwt/angular2-jwt.js',
     'angular2/bundles/angular2.min.js'
 ] 
+
 gulp.task('build:styles', function() {
     var copyNgStyles= gulp.src('node_modules/ng2-material/dist/*.css')
      .pipe(minifyCSS())
@@ -63,10 +64,16 @@ gulp.task('build:styles', function() {
         
 //        .pipe(refresh(lrserver));
 });
+
+gulp.task("buld:resources", function() {
+    return gulp.src(["src/client/app/**", "!**/*.ts"])
+        .pipe(gulp.dest("dist/app"))
+});
+
 gulp.task('buld:assets', function() {
     return gulp.src("src/client/assets/**")
         .pipe(imagemin({optimizationLevel: 5}))
-        .pipe(gulp.dest('dist/assets/'))
+        .pipe(gulp.dest('dist/assets'))
         //.pipe(refresh(lrserver));
 });
 gulp.task('build:index', function(){
@@ -78,9 +85,11 @@ gulp.task('build:index', function(){
 //       var copyStyles= gulp.src('src/client/styles/*.*')
 //        .pipe(gulp.dest('dist/styles'))
     //Let's copy our index into dist   
-    var copyIndex = gulp.src('src/client/index.html')
+    var copyJson = gulp.src('src/client/*.json')
         .pipe(gulp.dest('dist'))
-    return [copyJsNPMDependencies, copyIndex];
+ var copyIndex = gulp.src('src/client/index.html')
+        .pipe(gulp.dest('dist'))
+    return [copyJsNPMDependencies, copyIndex, copyJson];
 });
 
 gulp.task('build:app', function(){
@@ -95,7 +104,7 @@ gulp.task('build:app', function(){
 
 
 gulp.task('build', function(callback){
-    runSequence('clean', 'build:server', 'build:index', 'buld:assets', 'build:styles', 'build:app', callback);
+    runSequence('clean', 'build:server', 'build:index', "buld:resources", 'buld:assets', 'build:styles', 'build:app', callback);
 });
 
 gulp.task('default', ['build']);

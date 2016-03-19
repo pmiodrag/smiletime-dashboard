@@ -44,14 +44,14 @@ export class AuthComponent {
             this.picture = this.jsonObj['picture'];
             this.name = this.jsonObj['name'];
         } else {
-            this.picture = "img/avatar.jpg"
+            this.picture = "assets/img/avatar.jpg"
             this.name = "";
         }
     }
     logout() {
         localStorage.removeItem('profile');
         localStorage.removeItem('id_token');
-        this.picture = "img/avatar.jpg";
+        this.picture = "assets/img/avatar.jpg";
         this.name = "";
     }
 

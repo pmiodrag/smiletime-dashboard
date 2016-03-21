@@ -21,7 +21,9 @@ export class OrdersComponent {
     ngOnInit() {
       let customerId = parseInt(this._routeParams.get('id'), 10);
       this.dataService.getOrders().subscribe((orders: any[]) => {
-        this.filteredOrders = orders.filter(order => order.customerId === customerId);
+           console.log("getOrders", orders);
+        this.filteredOrders = orders.filter(order => order.patientId === customerId);
+         console.log("this.filteredOrders", this.filteredOrders);
       });
     }
 }

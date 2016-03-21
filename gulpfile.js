@@ -40,6 +40,7 @@ gulp.task('build:server', function () {
 */
 var jsNPMDependencies = [
     'es6-shim/es6-shim.min.js',
+     'es6-shim/es6-shim.map',
     'systemjs/dist/system-polyfills.js',
     'angular2/bundles/angular2-polyfills.js',
     'systemjs/dist/system.src.js',
@@ -48,6 +49,7 @@ var jsNPMDependencies = [
     'angular2/bundles/router.dev.js',
     'angular2/bundles/http.dev.js',
     'angular2-jwt/angular2-jwt.js',
+     'angular2-jwt/angular2-jwt.js.map',
     'angular2/bundles/angular2.min.js'
 ] 
 

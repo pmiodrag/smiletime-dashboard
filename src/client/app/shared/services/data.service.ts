@@ -22,7 +22,7 @@ export class DataService {
     }
 
     getOrders(){
-      return this.http.get(this.baseUrl + 'orders')
+      return this.http.get(this.baseUrl + 'selectTreatments')
                       .map((res: Response) => res.json())
                       .catch(this.handleError);               
     }

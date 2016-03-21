@@ -48,7 +48,7 @@ export class CustomersComponent {
   filterChanged(data: string) {
     if (data && this.customers) {
         data = data.toUpperCase();
-        let props = ['firstName', 'lastName', 'address', 'city', 'orderTotal'];
+        let props = ['firstName', 'middleName', 'lastName', 'address', 'place'];
         let filtered = this.customers.filter(item => {
             let match = false;
             for (let prop of props) {

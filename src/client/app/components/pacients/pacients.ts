@@ -52,8 +52,7 @@ export class PacientsComponent {
         let filtered = this.pacients.filter(item => {
             let match = false;
             for (let prop of props) {
-                //console.log(item[prop] + ' ' + item[prop].toUpperCase().indexOf(data));
-                if (item[prop].toString().toUpperCase().indexOf(data) > -1) {
+                if (item[prop]!= null && item[prop].toString().toUpperCase().indexOf(data) > -1) {
                   match = true;
                   break;
                 }

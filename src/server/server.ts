@@ -1,6 +1,7 @@
 import express = require('express');
 import path = require('path');
-import * as routes from "./api/pacient/controller";
+import * as pacients from "./api/pacient/controller";
+import * as treatments from "./api/treatment/controller";
 //import externalModule = require("./api/pacient/externalModule");
 //import ctrl = require('./api/pacient/controller');
 var port: number = process.env.PORT || 3000;
@@ -40,8 +41,8 @@ var server = app.listen(port, function() {
 //    }
 //   });
 //}
-app.get('/getPacients', routes.getPacients);
-app.get('/selectTreatments', routes.selectTreatments);
+app.get('/getPacients', pacients.getPacients);
+app.get('/selectTreatments', treatments.selectTreatments);
 
 //var selectTreatments = (req: express.Request, res: express.Response) => {
 //    console.log("selectTreatments")

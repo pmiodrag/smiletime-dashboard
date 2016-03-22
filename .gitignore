@@ -1,5 +1,5 @@
 node_modules
-dist/
+
 src/app/**/*.js
 src/app/**/*.js.map
 
@@ -7,3 +7,4 @@ src/app/**/*.js.map
 
 /nbproject/private/
 /bower_components/
+dist

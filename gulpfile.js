@@ -12,29 +12,14 @@ var imagemin = require('gulp-imagemin');
 gulp.task('clean', function(){
     return del('dist')
 });
-
-gulp.task('build:server', function () {
-	var tsProject = ts.createProject('src/server/tsconfig.json');
-//          var copyIndex = gulp.src('src/server/index.html')
-//        .pipe(gulp.dest('dist/server'))
-    
-    var tsResult = gulp.src('src/server/**/*.ts')
-		.pipe(sourcemaps.init())
-        .pipe(ts(tsProject))
-// .pipe(concat('server.js'))
-//        .pipe(sourcemaps.write()) 
-//		.pipe(gulp.dest('dist/server'))
-//         return [tsResult, copyIndex];
-	return tsResult.js
-        .pipe(concat('server.js'))
-        .pipe(sourcemaps.write()) 
-		.pipe(gulp.dest('dist'))
-        
+gulp.task('buildServer', function () {
+	var tsProject = ts.createProject(path.resolve('./src/server/tsconfig.json'));
+	return gulp.src(path.resolve('./src/server/**/*.ts'))
+		.pipe(ts(tsProject))
+		.js
+		.pipe(gulp.dest(path.resolve('dist')))
 });
-
-
 // CLIENT
-
 /*
   jsNPMDependencies, sometimes order matters here! so becareful!
 */
@@ -84,8 +69,6 @@ gulp.task('build:index', function(){
     //Let's copy our head dependencies into a dist/libs
     var copyJsNPMDependencies = gulp.src(mappedPaths, {base:'node_modules'})
         .pipe(gulp.dest('dist/libs'))
-//       var copyStyles= gulp.src('src/client/styles/*.*')
-//        .pipe(gulp.dest('dist/styles'))
     //Let's copy our index into dist   
     var copyJson = gulp.src('src/client/*.json')
         .pipe(gulp.dest('dist'))
@@ -106,7 +89,8 @@ gulp.task('build:app', function(){
 
 
 gulp.task('build', function(callback){
-    runSequence('clean', 'build:server', 'build:index', "buld:resources", 'buld:assets', 'build:styles', 'build:app', callback);
+    runSequence('clean', 'buildServer', 'build:index', "buld:resources", 'buld:assets', 'build:styles', 'build:app', callback);
+   // runSequence('clean', 'buildServer',callback);
 });
 
 gulp.task('default', ['build']);

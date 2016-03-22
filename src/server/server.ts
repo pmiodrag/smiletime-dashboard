@@ -9,16 +9,6 @@ app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
 app.use('/styles', express.static(path.resolve(__dirname, 'styles')));
 app.use('/fonts', express.static(path.resolve(__dirname, 'assets/fonts')));
 
-
-var renderCustomer = (req: express.Request, res: express.Response) => {
-    console.log("renderCustomer")
-    res.sendFile(path.resolve(__dirname, 'customers.json'));
-}
-app.get('/getcustomers', renderCustomer);
-
-
-
-
 var server = app.listen(port, function() {
     var host = server.address().address;
     var port = server.address().port;
@@ -35,23 +25,19 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-  if (err) throw err;
-  console.log('The solution is: ', rows[0].solution);
-});
-var selectCustomers = (req: express.Request, res: express.Response) => {
-    console.log("selectCustomers")
-    connection.query("SELECT * from patient",function(err,rows){
+var getPacients = (req: express.Request, res: express.Response) => {
+   console.log("getPacients")
+   connection.query("SELECT * from patient",function(err,rows){
     if(err) {
         console.log("Problem with MySQL"+err);
-        res.send(path.resolve(__dirname, 'customers.json'));
+        res.send(path.resolve(__dirname, 'pacients.json'));
     } else {
      console.log('The solution is: ', rows[0]);        
         res.send(JSON.stringify(rows));
     }
-  });
+   });
 }
-app.get('/selectCustomers', selectCustomers);
+app.get('/getPacients', getPacients);
 
 var selectTreatments = (req: express.Request, res: express.Response) => {
     console.log("selectTreatments")

@@ -1,0 +1,15 @@
+ <h3><span class="fa fa-list-ol"></span>&nbsp;&nbsp;Treatments</h3>
+
+<br />
+<table class="table table-striped table-hover" *ngFor="#treatment of filteredTreatments">
+    <tr>
+        <td>{{treatment.patientId}}</td>  
+        <td>{{treatment.therapy}}</td>
+        <td>{{treatment.diagnose}}</td>   
+        <td>{{treatment.price}}</td>      
+    </tr>
+</table>
+
+<br />
+
+<a href="#" [routerLink]="['Pacients']" router-params="">View all Pacients</a>

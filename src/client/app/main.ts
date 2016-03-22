@@ -6,7 +6,7 @@ import {APP_BASE_HREF, ROUTER_PROVIDERS, ROUTER_BINDINGS, LocationStrategy, Path
 import { HTTP_PROVIDERS, Http } from 'angular2/http';
 import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 import {AuthHttp, AuthConfig} from 'angular2-jwt/angular2-jwt';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app';
 
 bootstrap(AppComponent, [
     ROUTER_PROVIDERS,

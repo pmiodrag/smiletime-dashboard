@@ -14,14 +14,14 @@ export class DataService {
 
     constructor(private http: Http) { }
     
-    getCustomers() {       
+    getPacients() {       
     
-        return this.http.get(this.baseUrl + 'selectCustomers')
+        return this.http.get(this.baseUrl + 'getPacients')
                        .map((res: Response) => res.json())
                         .catch(this.handleError);
     }
 
-    getOrders(){
+    getTreatments(){
       return this.http.get(this.baseUrl + 'selectTreatments')
                       .map((res: Response) => res.json())
                       .catch(this.handleError);               

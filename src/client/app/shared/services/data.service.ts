@@ -26,7 +26,10 @@ export class DataService {
                       .map((res: Response) => res.json())
                       .catch(this.handleError);               
     }
-    
+    getPacients() {
+        return this.http.get(this.baseUrl + '/customers.json')
+                        .map((res: Response) => res.json())
+                        .catch(this.handleError);
     handleError(error: any) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');

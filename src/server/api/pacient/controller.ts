@@ -15,3 +15,14 @@ export function getPacients (req: express.Request, res: express.Response)  {
     }
    });
 }
+
+export function addPacient (req: express.Request, res: express.Response)  {
+   console.log("addPacient controller")
+   db.connection.query("INSERT INTO patient SET ?", req.params, function(err,rows){
+    if(err) {
+        console.log("Problem with MySQL"+err);        
+    } else {
+        console.log('Last insert ID:', res.locals.insertId);
+    }
+   });
+}

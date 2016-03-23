@@ -18,6 +18,7 @@ var server = app.listen(port, function() {
 });
 
 app.get('/getPacients', pacients.getPacients);
+app.get('/addPacient', pacients.addPacient);
 app.get('/selectTreatments', treatments.selectTreatments);
 
 

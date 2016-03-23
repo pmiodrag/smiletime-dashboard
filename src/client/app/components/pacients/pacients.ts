@@ -24,7 +24,7 @@ export class PacientsComponent {
   pacients: any[] = [];
   filteredPacients: any[] = [];
   sorter: Sorter;
-    pacient : any;
+  pacient : any;
   constructor(private dataService: DataService) { }
   
   ngOnInit() {
@@ -65,18 +65,21 @@ export class PacientsComponent {
       this.filteredPacients = this.pacients;
     }
   }
-    addPacient () {
-         this.dataService.getPacient()
+  
+  addPacient () {
+    this.dataService.getPacient()
         .subscribe((pacients:any[]) => {
           this.pacient = pacients[0];
         });
-console.log("make service call for rest post pacient  ");
+    console.log("make service call for rest post pacient  "+this.pacient);
+    this.dataService.addPacient(this.pacient);
          
     
  
-    }
+  }
+  
   deletePacient(id: number) {
- console.log("make service call for rest delete with id::: ", id);
+    console.log("make service call for rest delete with id::: ", id);
   }
 
   sort(prop: string) {

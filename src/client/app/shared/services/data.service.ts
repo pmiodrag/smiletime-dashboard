@@ -20,16 +20,24 @@ export class DataService {
                        .map((res: Response) => res.json())
                         .catch(this.handleError);
     }
+    
+    addPacient(patient: any) {       
+    
+        return this.http.get(this.baseUrl + 'addPacient')
+                       .map((res: Response) => res.json())
+                        .catch(this.handleError);
+    }
 
     getTreatments(){
       return this.http.get(this.baseUrl + 'selectTreatments')
                       .map((res: Response) => res.json())
                       .catch(this.handleError);               
     }
-    getPacients() {
+    getPacient() {
         return this.http.get(this.baseUrl + '/customers.json')
                         .map((res: Response) => res.json())
                         .catch(this.handleError);
+    }
     handleError(error: any) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');

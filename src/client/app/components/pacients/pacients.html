@@ -7,7 +7,7 @@
                     <img src="assets/images/people.png" alt="logo">
                     <span>{{ title }}</span>
                 </h2>
-                <button md-fab class="blue-lighten-3"  aria-label="Use Android">
+                 <button md-fab class="md-mini blue-lighten-3" (click)="addPacient()"   aria-label="Add pacient">
                    <i class="fa fa-user-plus"></i>
                 </button>
             </div>       
@@ -39,8 +39,13 @@
                     <div class="card">
                         <!--<button class="btn close card-close" title="Delete Customer" (click)="deleteCustomer(customer.id)">&times;</button>-->
                         <div class="card-header green">
-                            <a [routerLink]="['Treatments',{id:pacient.id}]" class="white">{{pacient.firstName | capitalize }}{{pacient.middleName | capitalize }} {{ pacient.lastName | capitalize }} 
-                                <i class="icon-edit icon-white editIcon"></i></a>
+                            <a [routerLink]="['Treatments',{id:pacient.id}]" class="white">{{pacient.firstName | capitalize }}{{pacient.middleName | capitalize }} {{ pacient.lastName | capitalize }}</a>
+                             <button md-fab class="md-mini orange" (click)="editPacient()"  aria-label="Edit pacient">
+                                     <i class="fa fa-pencil-square-o"></i>
+                                </button>
+                                <button md-fab class="md-mini red" (click)="deletePacient()"  aria-label="Remove pacient">
+                                    <i class="fa fa-recycle"></i>
+                                </button>
                         </div>
                         <div class="card-body">
                             <div class="clearfix">

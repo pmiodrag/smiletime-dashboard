@@ -40,7 +40,9 @@ export class PacientsComponent {
 
     this.sorter = new Sorter();
   }
+    addPacient () {
 
+    }
   changeDisplayMode(mode: string) {
       this.listDisplayModeEnabled = (mode === 'List');
   }

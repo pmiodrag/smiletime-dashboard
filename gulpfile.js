@@ -35,17 +35,23 @@ var jsNPMDependencies = [
     'angular2/bundles/http.dev.js',
     'angular2-jwt/angular2-jwt.js',
      'angular2-jwt/angular2-jwt.js.map',
-    'angular2/bundles/angular2.min.js'
+    'angular2/bundles/angular2.min.js',
+            'ng2-material/all.js',
+             'ng2-material/all.js.map'
 ] 
 
 gulp.task('build:styles', function() {
     var copyNgStyles= gulp.src('node_modules/ng2-material/dist/*.css')
      .pipe(minifyCSS())
         .pipe(gulp.dest('dist/styles'));
+    var copyFontAwesome= gulp.src('src/client/styles/font-awesome/**')     
+     .pipe(gulp.dest('dist/styles/font-awesome'));
+//    var copyMaterialize= gulp.src('src/client/styles/materialize/**')     
+//     .pipe(gulp.dest('dist/styles/materialize'));
     var copyStyles= gulp.src('src/client/styles/*.css')
      .pipe(minifyCSS())
             .pipe(gulp.dest('dist/styles'))
-        return[copyStyles, copyNgStyles];
+        return[copyStyles, copyFontAwesome, copyNgStyles];
         //.pipe(less())
        // .on('error', console.log)
         

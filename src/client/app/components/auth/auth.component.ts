@@ -1,9 +1,9 @@
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES, CanActivate} from 'angular2/router';
 import {Http} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {AuthHttp, tokenNotExpired, JwtHelper} from 'angular2-jwt/angular2-jwt';
-import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
+//import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
 declare var Auth0Lock;
 
 @Component({

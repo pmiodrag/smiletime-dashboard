@@ -247,6 +247,9 @@ body {
 .red {
   background: #ae2323 !important;
 }
+.blue-lighten-3 {
+    background: #90caf9 !important;  
+}
 .form-group .help-block.form-group-inline-message {
   padding-top: 5px;
 }

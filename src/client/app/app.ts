@@ -6,6 +6,7 @@ import { TreatmentsComponent } from './components/treatments/treatments';
 import { AuthComponent } from './components/auth/auth.component';
 import {Dashboard} from './components/dashboard/dashboard';
 import {Tables} from './components/tables/tables';
+import {MATERIAL_DIRECTIVES} from "ng2-material/all";
 @Component({ 
     selector: 'app-container',
     directives: [ROUTER_DIRECTIVES, RouterLink, CORE_DIRECTIVES, AuthComponent, PacientsComponent, Dashboard],

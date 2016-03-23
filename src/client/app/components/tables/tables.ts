@@ -1,4 +1,4 @@
-import {Component, View, Injector, provide } from 'angular2/core';
+import {Component, Injector, provide } from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {RdLoading} from '../rd-loading/rd-loading';
 import {RdWidget} from '../rd-widget/rd-widget';
@@ -12,9 +12,7 @@ import {ServerListService} from '../../services/server_list';
 
 @Component({
   selector: 'tables',
-  providers: [ServerListService]
-})
-@View({
+  providers: [ServerListService],
   templateUrl: 'app/components/tables/tables.html',
   directives: [CORE_DIRECTIVES, RdWidget, RdWidgetHeader, RdWidgetBody, RdWidgetFooter, RdLoading,ServerListView]
 })

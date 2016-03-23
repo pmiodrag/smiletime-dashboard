@@ -1,11 +1,9 @@
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 
 @Component({
   selector: 'rd-widget-header',
-  properties: ['title', 'icon']
-})
-@View({
+  properties: ['title', 'icon'],
   templateUrl: 'app/components/rd-widget-header/rd-widget-header.html',
   directives: [CORE_DIRECTIVES]
 })

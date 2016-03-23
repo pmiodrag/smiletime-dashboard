@@ -1,11 +1,9 @@
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 
 @Component({
   selector: 'rd-widget-body',
-  properties: ['loading', 'classes']
-})
-@View({
+  properties: ['loading', 'classes'],
   templateUrl: 'app/components/rd-widget-body/rd-widget-body.html',
   directives: [CORE_DIRECTIVES]
 })

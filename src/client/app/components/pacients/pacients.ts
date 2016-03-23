@@ -40,9 +40,7 @@ export class PacientsComponent {
 
     this.sorter = new Sorter();
   }
-    addPacient () {
-
-    }
+    
   changeDisplayMode(mode: string) {
       this.listDisplayModeEnabled = (mode === 'List');
   }
@@ -67,9 +65,11 @@ export class PacientsComponent {
       this.filteredPacients = this.pacients;
     }
   }
-
+    addPacient () {
+ console.log("make service call for rest post pacient  ");
+    }
   deletePacient(id: number) {
-
+ console.log("make service call for rest delete with id::: ", id);
   }
 
   sort(prop: string) {

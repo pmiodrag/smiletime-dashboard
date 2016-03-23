@@ -40,10 +40,10 @@
                         <!--<button class="btn close card-close" title="Delete Customer" (click)="deleteCustomer(customer.id)">&times;</button>-->
                         <div class="card-header green">
                             <a [routerLink]="['Treatments',{id:pacient.id}]" class="white">{{pacient.firstName | capitalize }}{{pacient.middleName | capitalize }} {{ pacient.lastName | capitalize }}</a>
-                             <button md-fab class="md-mini orange" (click)="editPacient()"  aria-label="Edit pacient">
+                              <button md-fab class="md-mini orange" (click)="editPacient()"  aria-label="Edit pacient">
                                      <i class="fa fa-pencil-square-o"></i>
                                 </button>
-                                <button md-fab class="md-mini red" (click)="deletePacient()"  aria-label="Remove pacient">
+                                <button md-fab class="md-mini red" (click)="deletePacient(pacient.id)"  aria-label="Remove pacient">
                                     <i class="fa fa-recycle"></i>
                                 </button>
                         </div>

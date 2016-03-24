@@ -1,10 +1,16 @@
 import express = require('express');
 import path = require('path');
+import bodyParser = require('body-parser');
 import * as pacients from "./api/pacient/controller";
 import * as treatments from "./api/treatment/controller";
 var port: number = process.env.PORT || 3000;
 var app = express();
+//var router = express.Router();
 
+/* GET users listing. */
+//router.get('/', function(req, res, next) {
+//  res.send('respond with a resource');
+//});
 app.use('/app', express.static(path.resolve(__dirname, 'app')));
 app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
 app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
@@ -18,7 +24,8 @@ var server = app.listen(port, function() {
 });
 
 app.get('/getPacients', pacients.getPacients);
-app.get('/addPacient', pacients.addPacient);
+app.post('/addPacient', pacients.addPacient);
+app.get('/getPacientData', pacients.getPacientData);
 app.get('/selectTreatments', treatments.selectTreatments);
 
 

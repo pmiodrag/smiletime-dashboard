@@ -16,6 +16,8 @@ import {MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS} from "ng2-material/all";
   directives: [CORE_DIRECTIVES, RouterLink, FilterTextboxComponent, SortByDirective],
   pipes: [CapitalizePipe, TrimPipe]
 })
+
+
 export class PacientsComponent {
 
   title: string;
@@ -24,7 +26,8 @@ export class PacientsComponent {
   pacients: any[] = [];
   filteredPacients: any[] = [];
   sorter: Sorter;
-  pacient : any;
+  pacient : Pacient;
+  pacientOBJ : Pacient;
   constructor(private dataService: DataService) { }
   
   ngOnInit() {
@@ -37,7 +40,11 @@ export class PacientsComponent {
           console.log("getPacients", pacients);
           this.pacients = this.filteredPacients = pacients;
         });
-
+    this.dataService.getPacient()
+        .subscribe((pacients:Pacient[]) => {
+          this.pacient = pacients[0];
+          console.log("data service init get pacient from json  ", this.pacient);
+          
     this.sorter = new Sorter();
   }
     
@@ -66,16 +73,10 @@ export class PacientsComponent {
     }
   }
   
-  addPacient () {
-    this.dataService.getPacient()
-        .subscribe((pacients:any[]) => {
-          this.pacient = pacients[0];
-        });
-    console.log("make service call for rest post pacient  "+this.pacient);
-    this.dataService.addPacient(this.pacient);
-         
-    
- 
+    addPacient () {   
+        this.dataService.addPacient(this.pacient).subscribe((res:any) => {         
+           console.log("make service call for rest post pacient  "+res);         
+    });
   }
   
   deletePacient(id: number) {
@@ -90,4 +91,17 @@ export class PacientsComponent {
       this.sorter.sort(this.filteredPacients, prop);
   }
 
+}
+export interface Pacient {
+    id: number; 
+    firstName: string;
+    lastName: string;
+    middleName: string,
+    gender: string,
+    address: string;
+    place: string;    
+    birthDate: string;
+    email : string;
+    phone: number;
+    mobilePhone: number;
 }

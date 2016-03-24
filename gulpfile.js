@@ -69,6 +69,13 @@ gulp.task('buld:assets', function() {
         .pipe(gulp.dest('dist/assets'))
         //.pipe(refresh(lrserver));
 });
+gulp.task('buld:data', function() {
+     var copyPacientData = gulp.src("src/client/data/pacients.json")
+        .pipe(gulp.dest('dist/api/pacient'));
+    var copyTreatmentData = gulp.src("src/client/data/treatments.json")
+        .pipe(gulp.dest('dist/api/treatment'));
+  return [copyPacientData, copyTreatmentData];
+});
 gulp.task('build:index', function(){
     var mappedPaths = jsNPMDependencies.map(file => {return path.resolve('node_modules', file)}) 
     
@@ -95,7 +102,7 @@ gulp.task('build:app', function(){
 
 
 gulp.task('build', function(callback){
-    runSequence('clean', 'buildServer', 'build:index', "buld:resources", 'buld:assets', 'build:styles', 'build:app', callback);
+    runSequence('clean', 'buildServer', 'build:index', "buld:resources", 'buld:assets', 'build:styles', 'buld:data', 'build:app', callback);
    // runSequence('clean', 'buildServer',callback);
 });
 

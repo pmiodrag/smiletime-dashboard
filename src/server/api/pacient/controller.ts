@@ -15,9 +15,12 @@ export function getPacients (req: express.Request, res: express.Response)  {
     }
    });
 }
-
+export function getPacientData (req: express.Request, res: express.Response)  {
+   console.log("getPacientData server side ", __dirname)   
+    res.sendFile(path.resolve(__dirname, 'pacients.json'));   
+};
 export function addPacient (req: express.Request, res: express.Response)  {
-   console.log("addPacient controller")
+   console.log("addPacient controller req.params")
    db.connection.query("INSERT INTO patient SET ?", req.params, function(err,rows){
     if(err) {
         console.log("Problem with MySQL"+err);        
@@ -25,4 +28,5 @@ export function addPacient (req: express.Request, res: express.Response)  {
         console.log('Last insert ID:', res.locals.insertId);
     }
    });
+    res.sendStatus(200);   
 }

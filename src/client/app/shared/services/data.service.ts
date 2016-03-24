@@ -1,18 +1,36 @@
 import { Injectable } from 'angular2/core';
 import { Http, Response } from 'angular2/http';
-
+//import {RESTClient, GET, PUT, POST, DELETE, BaseUrl, Headers, DefaultHeaders, Path, Body, Query} from 'angular2-rest';
 //Grab everything with import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch';
-
+import {Pacient} from '../../components/pacients/pacients'
 
 @Injectable()
+//@BaseUrl("http://localhost:3000/")
+//@DefaultHeaders({
+//    'Accept': 'application/json',
+//    'Content-Type': 'application/json'
+//})
 export class DataService {
-  
     baseUrl: string = '/';
-
+    private _pacientObserver: Observer<Pacient[]>;
     constructor(private http: Http) { }
+//    protected requestInterceptor(req: Request) {
+//        if (SessionFactory.getInstance().isAuthenticated) {
+//            req.headers.append('jwt', SessionFactory.getInstance().credentials.jwt);
+//        }
+//    }
+//
+//    protected requestInterceptor(req: Response) {
+//        // do sg with responses
+//    }
+
+//    @POST("addPacient")
+//    public postTodo( @Body todo: Todo): Observable { return null; };
+  
+   
     
     getPacients() {       
     
@@ -21,11 +39,11 @@ export class DataService {
                         .catch(this.handleError);
     }
     
-    addPacient(patient: any) {       
-    
-        return this.http.get(this.baseUrl + 'addPacient')
-                       .map((res: Response) => res.json())
-                        .catch(this.handleError);
+    addPacient(pacient: Pacient) {       
+         console.log("addPacient", pacient);
+         return this.http.post(this.baseUrl + 'addPacient', pacient.firstName)
+           .map((res: Response) => res.json())
+            .catch(this.handleError);
     }
 
     getTreatments(){
@@ -34,7 +52,7 @@ export class DataService {
                       .catch(this.handleError);               
     }
     getPacient() {
-        return this.http.get(this.baseUrl + '/customers.json')
+        return this.http.get(this.baseUrl + 'getPacientData')
                         .map((res: Response) => res.json())
                         .catch(this.handleError);
     }

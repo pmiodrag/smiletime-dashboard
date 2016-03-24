@@ -92,6 +92,7 @@ export class PacientsComponent {
   }
 
 }
+}
 export interface Pacient {
     id: number; 
     firstName: string;

@@ -97,7 +97,7 @@ gulp.task('build:app', function(){
         .pipe(ts(tsProject))
 	return tsResult.js
         .pipe(sourcemaps.write()) 
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('dist/app'))
 });
 
 

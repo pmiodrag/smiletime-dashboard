@@ -2,12 +2,12 @@ import { Component } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { RouterLink, RouteParams } from 'angular2/router';
 import { DataService } from '../../shared/services/data.service';
-
+import {Tables} from '../tables/tables';
 @Component({ 
   selector: 'treatments',
   providers: [DataService],
   templateUrl: 'app/components/treatments/treatments.html',
-  directives: [CORE_DIRECTIVES, RouterLink]
+  directives: [CORE_DIRECTIVES, RouterLink, Tables]
 })
 export class TreatmentsComponent {
 	
@@ -23,7 +23,6 @@ export class TreatmentsComponent {
       this.dataService.getTreatments().subscribe((treatments: any[]) => {
           
         this.filteredTreatments = treatments.filter(treatment => treatment.patientId === patientId);
-         console.log("this.filteredTreatments", this.filteredTreatments);
       });
     }
 }

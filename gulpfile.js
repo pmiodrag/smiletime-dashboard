@@ -14,7 +14,7 @@ gulp.task('clean', function(){
 });
 gulp.task('buildServer', function () {
 	var tsProject = ts.createProject(path.resolve('./src/server/tsconfig.json'));
-	return gulp.src(path.resolve('./src/server/**/*.ts'))
+	return tsProject.src(path.resolve('./src/server/**/*.ts'))
 		.pipe(ts(tsProject))
 		.js
 		.pipe(gulp.dest(path.resolve('dist')))
@@ -92,7 +92,7 @@ gulp.task('build:index', function(){
 
 gulp.task('build:app', function(){
     var tsProject = ts.createProject('src/client/tsconfig.json');
-    var tsResult = gulp.src('src/client/**/*.ts')
+    var tsResult = tsProject.src(path.resolve('./src/client/**/*.ts'))
 		.pipe(sourcemaps.init())
         .pipe(ts(tsProject))
 	return tsResult.js
@@ -102,8 +102,8 @@ gulp.task('build:app', function(){
 
 
 gulp.task('build', function(callback){
-    runSequence('clean', 'buildServer', 'build:index', "buld:resources", 'buld:assets', 'build:styles', 'buld:data', 'build:app', callback);
-   // runSequence('clean', 'buildServer',callback);
+     runSequence('clean', 'buildServer', 'build:index', "buld:resources", 'buld:assets', 'build:styles', 'buld:data', 'build:app', callback);
+    // runSequence('clean', 'build:app',callback);
 });
 
 gulp.task('default', ['build']);

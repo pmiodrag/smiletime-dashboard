@@ -35,7 +35,7 @@ export class PacientsComponent {
     this.filterText = 'Filter Pacients:';
     this.listDisplayModeEnabled = false;
 
-    this.dataService.getPacients() 
+    this.dataService.getPacients()  
         .subscribe((pacients:any[]) => {
           console.log("getPacients", pacients);
           this.pacients = this.filteredPacients = pacients;
@@ -44,7 +44,9 @@ export class PacientsComponent {
         .subscribe((pacients:Pacient[]) => {
           this.pacient = pacients[0];
           console.log("data service init get pacient from json  ", this.pacient);
-          
+   
+    })       
+         
     this.sorter = new Sorter();
   }
     
@@ -92,7 +94,7 @@ export class PacientsComponent {
   }
 
 }
-}
+
 export interface Pacient {
     id: number; 
     firstName: string;

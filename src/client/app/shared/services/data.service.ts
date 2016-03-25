@@ -15,7 +15,6 @@ import {Pacient} from '../../components/pacients/pacients'
 //})
 export class DataService {
     baseUrl: string = '/';
-    private _pacientObserver: Observer<Pacient[]>;
     constructor(private http: Http) { }
 //    protected requestInterceptor(req: Request) {
 //        if (SessionFactory.getInstance().isAuthenticated) {

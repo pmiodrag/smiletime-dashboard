@@ -17,7 +17,8 @@ app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
 app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
 app.use('/styles', express.static(path.resolve(__dirname, 'styles')));
 app.use('/fonts', express.static(path.resolve(__dirname, 'assets/fonts')));
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));   
 var server = app.listen(port, function() {
     var host = server.address().address;
     var port = server.address().port;

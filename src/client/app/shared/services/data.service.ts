@@ -1,5 +1,5 @@
 import { Injectable } from 'angular2/core';
-import { Http, Response } from 'angular2/http';
+import { Http, Response, Headers, RequestOptions } from 'angular2/http';
 //import {RESTClient, GET, PUT, POST, DELETE, BaseUrl, Headers, DefaultHeaders, Path, Body, Query} from 'angular2-rest';
 //Grab everything with import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
@@ -38,13 +38,24 @@ export class DataService {
                         .catch(this.handleError);
     }
     
-    addPacient(pacient: Pacient) {       
-         console.log("addPacient", pacient);
-         return this.http.post(this.baseUrl + 'addPacient', pacient.firstName)
-           .map((res: Response) => res.json())
-            .catch(this.handleError);
-    }
+//    addPacient(pacient: Pacient) {       
+//         console.log("addPacient", pacient);
+//         return this.http.post(this.baseUrl + 'addPacient', pacient.firstName)
+//           .map((res: Response) => res.json())
+//            .catch(this.handleError);
+//    }
+    addPacient (pacient: Pacient) : Observable<Pacient>  {
 
+    let body = JSON.stringify( pacient );
+     console.log("body", body);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.baseUrl + 'addPacient', body, options)
+        .map((res: Response) => res.json())
+                  //  .map(res =>  <Hero> res.json().data)
+                    .catch(this.handleError)
+  }
     getTreatments(){
       return this.http.get(this.baseUrl + 'selectTreatments')
                       .map((res: Response) => res.json())
